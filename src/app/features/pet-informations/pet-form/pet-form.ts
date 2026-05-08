@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-pet-form',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './pet-form.html',
-  styleUrl: './pet-form.css',
+  styleUrls: ['./pet-form.css'],
 })
-export class PetForm {}
+export class PetForm {
+  onSubmit(form: any) {
+    console.log('Formulário enviado:', form.value);
+  }
+}
