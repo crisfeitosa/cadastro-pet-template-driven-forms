@@ -11,17 +11,22 @@
       <div class="space-y-8">
         <div class="space-y-4">
           <div class="flex flex-col gap-1.5">
-            <label class="ml-1 text-sm font-bold text-stone-500 flex items-center gap-2" for="petName">
+            <label class="ml-1 text-sm font-bold text-stone-500 flex items-center gap-2">
               <span class="w-1.5 h-1.5 rounded-full bg-sage"></span>
               Nome do Pet
             </label>
-            <input type="text" class="form-input" placeholder="Como ele se chama?" name="petName" ngModel
+            <input type="text" class="form-input" placeholder="Como ele se chama?" id="petName" name="petName" ngModel
               #petName="ngModel" required minlength="3" />
-            @if(true) {
+            @if ((petName.touched || petForm.submitted) && petName.invalid) {
+            @if (petName.hasError('required')) {
             <p class="text-terracotta text-xs font-medium ml-1">
               🐾 O nome é obrigatório (mín. 3 letras).
             </p>
-            }
+            } @else if (petName.hasError('minlength')) {
+            <p class="text-terracotta text-xs font-medium ml-1">
+              🐾 O nome deve ter no mínimo 3 letras.
+            </p>
+            }}
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -37,7 +42,7 @@
           </div>
         </div>
 
-        <div class="p-4 md:p-6 bg-pastel-green/40 rounded-2xl md:rounded-[2rem] border border-stone-100 space-y-6">
+        <div class="p-4 md:p-6 bg-pastel-green/40 rounded-2xl md:rounded-4xl border border-stone-100 space-y-6">
           <p class="text-[10px] md:text-xs font-black uppercase tracking-widest text-stone-400 mb-2">
             Saúde & Comportamento
           </p>
@@ -49,7 +54,7 @@
           </label>
 
           <div>
-            <label class="block text-sm font-bold text-stone-500 mb-3" for="size">Porte do Pet</label>
+            <label class="block text-sm font-bold text-stone-500 mb-3">Porte do Pet</label>
             <div class="flex flex-wrap gap-6">
               <label class="flex items-center gap-2 cursor-pointer text-sm text-stone-600 font-medium">
                 <input type="radio" class="w-4 h-4 accent-sage border-stone-300 focus:ring-sage" name="size"
@@ -70,7 +75,7 @@
           </div>
 
           <div ngModelGroup="temperament">
-            <label class="block text-sm font-bold text-stone-500 mb-3" for="temperament">Temperamento</label>
+            <label class="block text-sm font-bold text-stone-500 mb-3">Temperamento</label>
             <div class="flex flex-wrap gap-6">
               <label class="flex items-center gap-2 cursor-pointer text-sm text-stone-600 font-medium">
                 <input type="checkbox" class="w-4 h-4 accent-sage rounded border-stone-300 focus:ring-sage"
@@ -105,7 +110,7 @@
         </div>
 
         <div class="flex flex-col gap-1.5">
-          <label class="ml-1 text-sm font-bold text-stone-500 flex items-center gap-2" for="bio">
+          <label class="ml-1 text-sm font-bold text-stone-500 flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-sage"></span>
             Bio do Pet
           </label>
