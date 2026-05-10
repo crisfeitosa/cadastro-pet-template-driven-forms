@@ -74,20 +74,24 @@
             <label class="block text-sm font-bold text-stone-500 mb-3">Porte do Pet</label>
             <div class="flex flex-wrap gap-6">
               <label class="flex items-center gap-2 cursor-pointer text-sm text-stone-600 font-medium">
-                <input type="radio" class="w-4 h-4 accent-sage border-stone-300 focus:ring-sage" name="size"
-                  value="small" ngModel required #size="ngModel" />
+                <input type="radio" class="form-radio" name="size" value="small" ngModel required #size="ngModel" />
                 Pequeno
               </label>
               <label class="flex items-center gap-2 cursor-pointer text-sm text-stone-600 font-medium">
-                <input type="radio" class="w-4 h-4 accent-sage border-stone-300 focus:ring-sage" name="size"
-                  value="medium" ngModel required #size="ngModel" />
+                <input type="radio" class="form-radio" name="size" value="medium" ngModel required #size="ngModel" />
                 Médio
               </label>
               <label class="flex items-center gap-2 cursor-pointer text-sm text-stone-600 font-medium">
-                <input type="radio" class="w-4 h-4 accent-sage border-stone-300 focus:ring-sage" name="size"
-                  value="large" ngModel required #size="ngModel" />
+                <input type="radio" class="form-radio" name="size" value="large" ngModel required #size="ngModel" />
                 Grande
               </label>
+            </div>
+            <div class="mt-1.5">
+              @if((size.touched || petForm.submitted) && size.invalid) {
+              <p class="text-terracotta text-xs font-medium ml-1">
+                🐾 O porte do pet é obrigatório.
+              </p>
+              }
             </div>
           </div>
 
