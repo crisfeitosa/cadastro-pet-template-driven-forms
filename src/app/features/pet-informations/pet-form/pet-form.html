@@ -151,6 +151,9 @@
           <textarea rows="4" class="form-input resize-none"
             placeholder="Conte um pouco sobre a história e as necessidades do pet..." name="bio" ngModel #bio="ngModel"
             required maxlength="200"></textarea>
+          @if ((bio.touched || petForm.submitted) && bio.invalid) {
+          <p class="text-terracotta text-xs font-medium ml-1">🐾 A bio é obrigatória.</p>
+          }
         </div>
       </div>
 
